@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doraemon Shooting Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("./nobitaa.jpg");
+            background-size: cover;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #003648;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #005f72;
+        }
+
+        .link {
+            display: inline-block;
+            margin-top: 15px;
+            color: white;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #005f72;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8em;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Doraemon Shooting Game</h1>
+        <p>Click on Doraemon to score points. But be careful, your bullets are limited!</p>
+        <button class="button" onclick="startGame()">Start Game</button>
+        <div>
+            <a href="instruct.html" class="link">View Instructions</a>
+        </div>
+    </div>
+    <div class="footer">© 2024 Game is Developed By Komal Sachdeva 
+         All rights reserved.</div>
+
+    <!-- Audio Elements -->
+    <audio id="background-music" loop>
+        <source src="rock_doraemon.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    
+    <audio id="button-click-sound">
+        <source src="rock_doraemon.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <script>
+        // Function to start the game
+        function startGame() {
+            document.getElementById("button-click-sound").play(); // Play sound on button click
+            window.location.href = "doremon.html"; // Redirect to your game page
+        }
+
+        // Play background music when the page loads
+        window.onload = function() {
+            var backgroundMusic = document.getElementById("background-music");
+            backgroundMusic.play();
+        };
+    </script>
+</body>
+
+</html>

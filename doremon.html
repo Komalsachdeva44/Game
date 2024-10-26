@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game </title>
+    <style>
+       * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding is included in the element's width/height */
+}
+
+html, body {
+    height: 100%; /* Ensure the body takes the full height */
+}
+
+.main-box {
+    background-image: url("./nobitaa.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    position: relative;
+    overflow: hidden; /* Prevent content from overflowing */
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spread the content evenly */
+    padding: 15px;
+    color: white;
+    width: 100%;
+    background-image: linear-gradient(#003648, #8080801a);
+    box-sizing: border-box;
+}
+
+.header div {
+    width: 33%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header img {
+    cursor: pointer;
+    width: 40px; /* Set a defined width to the image */
+    height: auto;
+}
+#blast {
+        display: none;
+      }
+      .fly-ghost{
+        position: absolute;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="main-box" id="main-boxx">
+        <!-- i have added a background img in main div now header div will be inside main div -->
+        <div class="header" onclick="headerr()">
+            <div class="1-sec" id="bulletss " >
+                <h3>Bullets: <span id="bullets">0</span></h3>
+
+            </div>
+            <div class="2-sec" id="reload">
+                <img src="./refresh.png" alt="'refresh" onclick="reloadded()" />
+
+            </div>
+            <div class="3-sec" id="score">
+                <h3>Score: <span id="scores">0</span></h3>
+
+            </div>
+        </div>
+        <div class="fly-ghost">
+            <img src="doraemon.gif"  alt="gif" id="ghost" style="width: 60px;" />
+            <img src="blast.gif" alt="gif" id="blast" style="width: 60px;" /> 
+            <!-- Intially make blast gif Hide -->
+        </div>
+    </div>
+
+    <!-- Js Code start -->
+     <script>
+        let bullets=5;
+        let scores=0;
+        let mainbox= document.getElementById("main-boxx");
+        let bullett=document.getElementById("bullets");
+        let reloadd=document.getElementById("reload");
+        let totalscore=document.getElementById("scores");
+        let ghostimg=document.getElementById("ghost");
+        let blastimg=document.getElementById("blast");
+
+        totalscore.innerText = scores;
+        bullett.innerText = bullets;
+        //This Function is used to increase the score of bullets d
+        mainbox.addEventListener("click", () => {
+        if (bullets >0)  {
+            bullets -= 1;
+            bullett.innerText = bullets;
+
+        } 
+        else {
+          alert("Bullets are finished! Game Over!");
+        }
+      });
+   
+
+      function random(){
+        let numrandom1= (Math.random()*999).toFixed();
+        let numrandom2= (Math.random()*999).toFixed();
+        console.log(numrandom1);
+        let num3=((Math.random()*99)+10).toFixed();
+        ghostimg.style.marginLeft=numrandom1+"px";
+        ghostimg.style.marginTop=numrandom2+"px";
+        blastimg.style.marginLeft=numrandom1+"px";
+        blastimg.style.marginTop=numrandom2+"px";
+        ghostimg.style.width= num3+ "px ";
+        // console.log(num3);
+        ghostimg.style.display = "block";
+        blastimg.style.display = "none";
+
+      }
+      random();
+      setInterval(() => {
+        random();
+      }, 2000);
+
+      ghostimg.addEventListener("click", () => {
+        event.stopPropagation(); // Prevents the mainbox click event from triggering
+        ghostimg.style.display = "none";
+        blastimg.style.display = "block";
+    if (bullets > 0) {
+        bullets -= 1;
+        scores += 1;
+        bullett.innerText = bullets; // Update bullets count
+        totalscore.innerText = scores; // Update score correctly
+
+    }
+        else {
+          alert("Bullets are finished! Game Over!");
+        }
+});
+
+function headerr(){
+    event.stopPropagation();
+}
+function reloadded(){
+    window.location.reload();
+}
+ghostimg.addEventListener("click", () => {
+        
+      });
+     </script>
+</body>
+
+
+</html>
